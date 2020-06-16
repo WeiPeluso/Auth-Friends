@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-import Frined from "./Friend";
+import Friend from "./Friend";
 import AddFriendForm from "./AddFriendForm";
 
 const FriendsList = () => {
@@ -33,7 +33,9 @@ const FriendsList = () => {
         console.log(res);
       })
       .catch((err) => console.log(err));
+    setFriend({ name: "", age: "", email: "" });
   };
+
   return (
     <div>
       <section>
@@ -46,7 +48,7 @@ const FriendsList = () => {
 
       <section>
         {list.map((friend) => {
-          return <Frined key={friend.id} friend={friend} />;
+          return <Friend key={friend.id} friend={friend} setList={setList} />;
         })}
       </section>
     </div>
